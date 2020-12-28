@@ -1,0 +1,53 @@
+package mainservice;
+
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.HashMap;
+
+import javax.xml.bind.JAXBElement;
+
+import org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream;
+import org.apache.ws.axis2.FortuneCookieStub;
+
+import fortunecookie.FortuneCookie;
+import usercheck.UserChecker;
+
+
+public class MainService {
+	private UserChecker check;
+	
+	public int getByteCount(Object o) {
+		System.out.println("HeI");
+		//Object o = object.getValue();
+		System.out.println("HeI");
+
+		System.out.println(o.getClass() + " " + o.toString());
+		System.out.println(o.toString());
+		ByteArrayOutputStream bos = new ByteArrayOutputStream();
+		try {
+			ObjectOutputStream oos = new ObjectOutputStream(bos);
+
+			oos.writeObject(o);
+			System.out.println("hei");
+
+			byte[] data = bos.toByteArray();
+			bos.close();
+			return data.length;
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
+	public String userCheck(String username, String password) {
+		if(check==null) {
+			check = new UserChecker(username, password);
+		}
+		check.setUser(username, password);
+		return check.getResult();
+	}
+	
+	public byte[] getQRImage(String username) {
+		return FortuneCookie.getQR(username);
+	}
+}

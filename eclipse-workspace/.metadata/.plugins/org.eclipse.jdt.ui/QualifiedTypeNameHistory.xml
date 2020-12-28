@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream"/>
+    <fullyQualifiedTypeName name="java.io.ObjectOutputStream"/>
+    <fullyQualifiedTypeName name="java.io.IOException"/>
+    <fullyQualifiedTypeName name="javax.naming.ldap.LdapContext"/>
+    <fullyQualifiedTypeName name="javax.naming.ldap.InitialLdapContext"/>
+    <fullyQualifiedTypeName name="java.util.Hashtable"/>
+    <fullyQualifiedTypeName name="javax.naming.Context"/>
+    <fullyQualifiedTypeName name="javax.naming.directory.DirContext"/>
+    <fullyQualifiedTypeName name="javax.naming.directory.InitialDirContext"/>
+    <fullyQualifiedTypeName name="javax.naming.directory.SearchControls"/>
+    <fullyQualifiedTypeName name="javax.naming.NamingEnumeration"/>
+    <fullyQualifiedTypeName name="javax.naming.directory.SearchResult"/>
+    <fullyQualifiedTypeName name="usercheck.UserChecker"/>
+    <fullyQualifiedTypeName name="java.util.HashMap"/>
+    <fullyQualifiedTypeName name="java.util.Calendar"/>
+    <fullyQualifiedTypeName name="org.apache.axis2.databinding.ADBBean"/>
+    <fullyQualifiedTypeName name="fortunecookie.FortuneCookie"/>
+    <fullyQualifiedTypeName name="org.apache.ws.axis2.FortuneCookieStub"/>
+    <fullyQualifiedTypeName name="org.apache.ws.axis2.FortuneCookieStub.GetCookie"/>
+    <fullyQualifiedTypeName name="org.apache.ws.axis2.FortuneCookieStub.GetCookieResponse"/>
+    <fullyQualifiedTypeName name="java.io.BufferedInputStream"/>
+    <fullyQualifiedTypeName name="java.net.URL"/>
+    <fullyQualifiedTypeName name="javax.naming.directory.Attributes"/>
+    <fullyQualifiedTypeName name="javax.naming.directory.Attribute"/>
+    <fullyQualifiedTypeName name="javax.naming.AuthenticationException"/>
+    <fullyQualifiedTypeName name="javax.naming.CommunicationException"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.net.URLEncoder"/>
+    <fullyQualifiedTypeName name="java.nio.charset.StandardCharsets"/>
+    <fullyQualifiedTypeName name="javax.xml.bind.JAXBElement"/>
+    <fullyQualifiedTypeName name="javax.xml.bind.JAXBContext"/>
+    <fullyQualifiedTypeName name="javax.xml.bind.Unmarshaller"/>
+    <fullyQualifiedTypeName name="java.io.InputStream"/>
+    <fullyQualifiedTypeName name="java.io.ByteArrayInputStream"/>
+    <fullyQualifiedTypeName name="javax.xml.stream.XMLStreamReader"/>
+    <fullyQualifiedTypeName name="javax.xml.stream.XMLInputFactory"/>
+    <fullyQualifiedTypeName name="java.io.DataOutputStream"/>
+</qualifiedTypeNameHistroy>

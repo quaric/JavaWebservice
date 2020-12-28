@@ -1,0 +1,55 @@
+package mainservice;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectOutputStream;
+import java.util.HashMap;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+
+import org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream;
+import org.apache.ws.axis2.FortuneCookieStub;
+
+import fortunecookie.FortuneCookie;
+import usercheck.UserChecker;
+
+
+public class MainService {
+	private UserChecker check;
+	
+	public int getByteCount(Object o) throws JAXBException {
+		System.out.println("HeI : " + o);
+		//InputStream f = new InputStream()
+		//Object o = object.getValue();
+		//JAXBContext context = JAXBContext.newInstance(o.getClass());
+		//Unmarshaller jaxbUnmarshaller = context.createUnmarshaller();
+		//Object k = (Object) jaxbUnmarshaller.unmarshal
+		ByteArrayOutputStream bos = new ByteArrayOutputStream();
+		try {
+			ObjectOutputStream oos = new ObjectOutputStream(bos);
+
+			oos.writeObject(o);
+			byte[] data = bos.toByteArray();
+			bos.close();
+			return data.length;
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
+	public String userCheck(String username, String password) {
+		if(check==null) {
+			check = new UserChecker(username, password);
+		}
+		check.setUser(username, password);
+		return check.getResult();
+	}
+	
+	public byte[] getQRImage(String username) {
+		return FortuneCookie.getQR(username);
+	}
+}

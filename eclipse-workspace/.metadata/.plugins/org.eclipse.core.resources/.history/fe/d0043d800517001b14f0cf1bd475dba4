@@ -1,0 +1,66 @@
+package fortunecookie;
+
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Calendar;
+
+import org.apache.ws.axis2.FortuneCookieStub;
+
+public class FortuneCookie {
+	private String cookieMessage;
+	private FortuneCookieStub stub;
+	
+	public org.apache.axis2.databinding.ADBBean getRemoteObject(java.lang.Class type) throws java.lang.Exception {
+		return (org.apache.axis2.databinding.ADBBean) type.newInstance();
+	}
+	
+	public FortuneCookie() {
+	} 
+	
+	public static int generateCookieNumber(String username) {
+		int cookieNumber;
+		Calendar calendar = Calendar.getInstance();
+		int todaysDateNumber = calendar.get(Calendar.DAY_OF_MONTH);
+		cookieNumber = (todaysDateNumber + username.length()) *2;
+		while(cookieNumber > 50) {
+			cookieNumber -= 50;
+		}
+		return cookieNumber;
+	}
+	
+	public static String getCookie(String username) {
+		FortuneCookie cookie = new FortuneCookie();
+		String r;
+		int n = generateCookieNumber(username);
+		try {
+			FortuneCookieStub stub = new FortuneCookieStub();
+			FortuneCookieStub.GetCookie getCookie = null;
+			for(int i=0;i<n;i++) {
+				getCookie = (FortuneCookieStub.GetCookie)cookie.getRemoteObject(FortuneCookieStub.GetCookie.class);
+			}
+			
+			FortuneCookieStub.GetCookieResponse response = stub.getCookie(getCookie);
+			r= response.get_return();
+		} catch(Exception e) {
+			r= e.toString();
+		}
+		return r;
+	}
+	
+	public static byte[] getQR(String username)  {
+		String cookie = getCookie(username);
+		byte[] imageAsByteArray;
+		try {
+			InputStream imageAsStream = new URL("http://api.qrserver.com/v1/create-qr-code/?data=HelloWorld!&size=100x100").openStream();
+			imageAsByteArray = new byte[imageAsStream.available()];
+			imageAsStream.read(imageAsByteArray);
+		} catch(Exception e) {
+			imageAsByteArray = null;
+		}
+		System.out.println(imageAsByteArray.toString());
+		return imageAsByteArray;
+	}
+}

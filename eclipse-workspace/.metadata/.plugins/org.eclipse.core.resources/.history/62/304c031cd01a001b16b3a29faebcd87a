@@ -1,0 +1,66 @@
+package mainservice;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectOutputStream;
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.stream.FactoryConfigurationError;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
+
+import org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream;
+import org.apache.ws.axis2.FortuneCookieStub;
+
+import fortunecookie.FortuneCookie;
+import usercheck.UserChecker;
+
+
+public class MainService {
+	private UserChecker check;
+	
+	public int getByteCount(String o) throws JAXBException, UnsupportedEncodingException, XMLStreamException, FactoryConfigurationError {
+		InputStream is = new ByteArrayInputStream(o.getBytes("UTF-8"));
+		System.out.println(o.getBytes().length);
+		XMLStreamReader reader = XMLInputFactory.newInstance().createXMLStreamReader(is);
+
+		JAXBContext context = JAXBContext.newInstance(String.class);
+		Unmarshaller jaxbUnmarshaller = context.createUnmarshaller();
+
+		JAXBElement<String> elem = jaxbUnmarshaller.unmarshal(reader, String.class);
+		Object object = elem.getValue();
+		System.out.println(object.toString());
+		
+		ByteArrayOutputStream bos = new ByteArrayOutputStream();
+		try {
+			ObjectOutputStream oos = new ObjectOutputStream(bos);
+
+			oos.writeObject(object);
+			byte[] data = bos.toByteArray();
+			bos.close();
+			return data.length;
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
+	public String userCheck(String username, String password) {
+		if(check==null) {
+			check = new UserChecker(username, password);
+		}
+		check.setUser(username, password);
+		return check.getResult();
+	}
+	
+	public byte[] getQRImage(String username) {
+		return FortuneCookie.getQR(username);
+	}
+}

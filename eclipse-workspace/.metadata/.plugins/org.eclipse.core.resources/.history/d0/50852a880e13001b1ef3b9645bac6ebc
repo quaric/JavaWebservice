@@ -1,0 +1,16 @@
+package bytecounter;
+
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
+import org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream;
+
+public class ByteCounter {
+	public int testReturn(String streng) {
+		System.out.println(streng);
+
+		int size = streng.getBytes().length;
+	
+		return size;
+	}
+}

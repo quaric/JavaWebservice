@@ -1,0 +1,7 @@
+INDEX VERSION 1.131
+C:\Users\Martin\eclipse-workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3226351171.index
+\Oblig2Services\src
+C:\Users\Martin\eclipse-workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3715727853.index
+\Oblig2Services\src
+C:\Users\Martin\eclipse-workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\982277300.index
+\Oblig2Services\src
